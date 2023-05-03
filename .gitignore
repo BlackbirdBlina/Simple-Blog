@@ -1,0 +1,9 @@
+logs
+node_modules
+.env
+.post.http
+.usuario.http
+.vscode
+dev.sqlite
+package-lock.json
+public/uploads/*

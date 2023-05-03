@@ -1,0 +1,29 @@
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "IMDblog",
+    "host": "127.0.0.1",
+    "dialect": "sqlite",
+    "storage": "dev.sqlite"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "username": "root",
+    "password": "UserPad1@",
+    "database": "dbend",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "require": true,
+      "rejectUnauthorized": false
+    }
+  }
+}
