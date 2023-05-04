@@ -6,6 +6,8 @@ var multer = require("multer");
 const path = require("path");
 const autenticar = require("../middleware/autenticacao.mid");
 
+const URL_PATH = process.env.URL_PATH || ''
+
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'public/uploads')
@@ -33,8 +35,8 @@ var upload = multer ({storage: storage, fileFilter: fileFilter});
 const { Post, Usuario } = require("../db/models");
 const ErrorHandler = require("../utils/ErrorHandler");
 
-function getFullpathFilename(filename) {
-    return `${URL_PATH}/static/uploads/${filename.filename}`
+function getFullpathFilename(filename,) {
+    return `${URL_PATH}/static/imgs/${filename.filename}`
 }
 
 router.post("/",  autenticar, upload.single("foto"));
