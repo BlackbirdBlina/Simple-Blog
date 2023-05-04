@@ -6,4 +6,3 @@ node_modules
 .vscode
 dev.sqlite
 package-lock.json
-public/uploads/*
