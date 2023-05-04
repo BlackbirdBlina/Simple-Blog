@@ -10,7 +10,7 @@ const URL_PATH = process.env.URL_PATH || ''
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'public/uploads')
+        cb(null, 'public/imgs')
     },
     filename: function (req, file, cb) {
          cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname)) 
