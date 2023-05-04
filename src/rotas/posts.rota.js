@@ -33,6 +33,10 @@ var upload = multer ({storage: storage, fileFilter: fileFilter});
 const { Post, Usuario } = require("../db/models");
 const ErrorHandler = require("../utils/ErrorHandler");
 
+function getFullpathFilename(filename) {
+    return `${URL_PATH}/static/uploads/${filename.filename}`
+}
+
 router.post("/",  autenticar, upload.single("foto"));
 router.post("/", autenticar, postMid);
 router.put("/", autenticar, postMid);
@@ -74,7 +78,7 @@ router.post("/:id/upload", upload.single("foto"), async(req, res) => {
     const post = await Post.findByPk(id);
    
     if(post){
-        post.foto = `/static/uploads/${req.file.filename}`
+        post.foto = getFullpathFilename(req.file)
         await post.save();
         res.json({msg: "Upload realizado com sucesso"});
     } else {
@@ -86,7 +90,7 @@ router.post("/:id/upload", upload.single("foto"), async(req, res) => {
 router.post("/", async (req, res, next) => {
     const data = req.body
     if (req.file){
-        data.foto = `/static/uploads/${req.file.filename}`
+        data.foto = getFullpathFilename(req.file)
     }
     try {
         const post = await Post.create(data);
